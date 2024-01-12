@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  app:
+    build: .
+    volumes:
+      - .:/sinau
+    ports:
+      - 8000:8000
+    image: app:django
+    container_name: sinau
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - dbsinau
+  dbsinau:
+    image:  bitnami/mariadb:latest
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_DATABASE: 'sinaudb'
+      ALLOW_EMPTY_PASSWORD: 'yes'
+    volumes:
+      - ./data/mysql/db:/var/lib/mysql
