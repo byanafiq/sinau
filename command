@@ -1,5 +1,5 @@
 docker-compose build
-docker-compose run --rm web django-admin startproject sinau .
+docker-compose run --rm app django-admin startproject sinau .
 docker-compose up
 docker exec -it sinau /bin/bash
 docker exec -it db_sinau /bin/bash
